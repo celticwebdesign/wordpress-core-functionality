@@ -120,11 +120,11 @@ class Fastnetmarketing_Admin_Admin {
     // http://premium.wpmudev.org/blog/wordpress-email-settings/
     function send_wp_mail_from($email)
     {
-        return "enquiries@triskelmarine.com";
+        return "company@email-address.com";
     }
     function send_wp_mail_from_name($email)
     {
-        return "Integrel Marine";
+        return "Company Name Here";
     }
 
     function login_url()
