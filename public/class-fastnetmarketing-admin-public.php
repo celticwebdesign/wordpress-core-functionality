@@ -101,33 +101,47 @@ class Fastnetmarketing_Admin_Public {
 	}
 
     // DEVELOPER
-    function dev_template_name()
-    {
-        global $template, $post;
-        $template_array = explode('/', $template);
+    public function developer_box() {
 
-        echo '<span class="dev-template-name">
+	     if( class_exists('acf') ) {
+	        // Will only access if ACF plugin is installed and activated
 
-                WPEngine<br />';
-        echo end($template_array).'<br />';
-        echo 'ID: '.get_the_ID().'<br />
-                <span class="dev-page-width"></span>px width<br />
-                <span class="dev-page-height"></span>px height<br />';
+	        if ( get_field( 'core_functionality__developer_box', 'options' ) == 'true' ) {
 
-        if (is_user_logged_in()) {
-            echo 'Logged IN - ';
-            global $current_user;
-            $user = wp_get_current_user();
-            echo $user->display_name."<br />";
+	        	wp_enqueue_script( $this->plugin_name.'developer-box', plugin_dir_url( __FILE__ ) . 'js/fastnetmarketing-admin-public-developer-box.js', array( 'jquery' ), $this->version, false );
 
-            echo 'Member - ';
-            $user_meta = get_userdata($user->ID);
-            echo implode(', ', $user_meta->roles);
-        } else {
-            echo 'Logged OUT';
-        }
+	        	wp_enqueue_style( $this->plugin_name.'developer-box', plugin_dir_url( __FILE__ ) . 'css/fastnetmarketing-admin-public-developer-box.css', array(), $this->version, 'all' );
 
-        echo '</span>';
+		        global $template, $post;
+		        $template_array = explode('/', $template);
+
+		        echo '<span class="dev-template-name">
+
+		                WPEngine<br />';
+		        echo end($template_array).'<br />';
+		        echo 'ID: '.get_the_ID().'<br />
+		                <span class="dev-page-width"></span>px width<br />
+		                <span class="dev-page-height"></span>px height<br />';
+
+		        if (is_user_logged_in()) {
+		            echo 'Logged IN - ';
+		            global $current_user;
+		            $user = wp_get_current_user();
+		            echo $user->display_name."<br />";
+
+		            echo 'Member - ';
+		            $user_meta = get_userdata($user->ID);
+		            echo implode(', ', $user_meta->roles);
+		        } else {
+		            echo 'Logged OUT';
+		        }
+
+		        echo '</span>';
+
+	        }
+
+	     }
+
     }
 
 }

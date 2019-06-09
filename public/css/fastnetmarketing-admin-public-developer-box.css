@@ -1,0 +1,9 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+
+/*Developer Red Box*/
+.dev-template-name {position:fixed;bottom:100px;left:10px;background: rgba(255,0,0,0.6);color:#fff;padding:2px 4px;font-size:0.8em;z-index: 100;}
+/*Developer Red Box*/

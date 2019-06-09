@@ -100,6 +100,48 @@ class Fastnetmarketing_Admin_Admin {
 
 	}
 
+	// Register ACF theme options from a plugin:
+	// https://support.advancedcustomfields.com/forums/topic/cant-register-options-page-from-plugin/
+	function acf_init() {
+
+		$page = acf_add_options_page(array(
+			'page_title' 	=> 'Core Functionality',
+			'menu_title' 	=> 'Core Functionality',
+			'menu_slug' 	=> 'theme-general-settings',
+			'capability' 	=> 'edit_posts',
+			'redirect' 		=> false,
+			'parent_slug' 	=> 'options-general.php',
+		));
+
+	}
+
+	// https://www.advancedcustomfields.com/resources/local-json/
+	function acf_json_save_json( $path ) {
+	    
+	    // update path
+	    $path = plugin_dir_path( __FILE__ ) . '/acf-json';
+	    
+	    
+	    // return
+	    return $path;
+	    
+	}
+
+	// https://www.advancedcustomfields.com/resources/local-json/
+	function acf_json_load_json( $paths ) {
+	    
+	    // remove original path (optional)
+	    unset($paths[0]);
+	    
+	    // append path
+	    $paths[] = plugin_dir_path( __FILE__ ) . 'acf-json';
+	    
+	    // return
+	    return $paths;
+	    
+	}
+
+
 
     // http://www.wpbeginner.com/wp-themes/change-the-footer-in-your-wordpress-admin-panel/
     // Change the Footer in Your WordPress Admin Panel

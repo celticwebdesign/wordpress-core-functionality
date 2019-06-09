@@ -164,6 +164,11 @@ class Fastnetmarketing_Admin {
 
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'remove_menus' );
 
+        /*
+			Only load Core Functionality settings is ACF plugin activated.
+        */
+        $this->loader->add_action( 'acf/init', $plugin_admin, 'acf_init' );
+
         // https://www.wpfaster.org/code/how-to-remove-emoji-styles-scripts-wordpress
         remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
         remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
@@ -191,6 +196,14 @@ class Fastnetmarketing_Admin {
         $this->loader->add_filter( 'login_headerurl', $plugin_admin, 'login_url' );
         $this->loader->add_filter( 'login_headertext', $plugin_admin, 'login_title' );
 
+        /*
+			https://www.advancedcustomfields.com/resources/local-json/
+			By using local json, the field group can be set to not display in the admin.
+			Therefore the field group is specific to the plugin and can only be updated manually or by updating the plugin (with field group in DB).
+        */
+        $this->loader->add_filter( 'acf/settings/save_json', $plugin_admin, 'acf_json_save_json' );
+        $this->loader->add_filter( 'acf/settings/load_json', $plugin_admin, 'acf_json_load_json' );
+
 	}
 
 	/**
@@ -207,7 +220,7 @@ class Fastnetmarketing_Admin {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
-        $this->loader->add_action( 'wp_footer', $plugin_public, 'dev_template_name' );
+        $this->loader->add_action( 'wp_footer', $plugin_public, 'developer_box' );
 
 	}
 
