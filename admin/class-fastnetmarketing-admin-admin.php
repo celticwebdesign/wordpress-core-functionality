@@ -113,33 +113,86 @@ class Fastnetmarketing_Admin_Admin {
 			'parent_slug' 	=> 'options-general.php',
 		));
 
+		if( function_exists('acf_add_local_field_group') ):
+
+			acf_add_local_field_group(array(
+				'key' => 'group_5cfcf01f2e74e',
+				'title' => 'Core Functionality',
+				'fields' => array(
+					array(
+						'key' => 'field_5cfcf03748512',
+						'label' => 'Developer Box',
+						'name' => 'core_functionality__developer_box',
+						'type' => 'radio',
+						'instructions' => 'Show / Do not show, the red developer box.',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'choices' => array(
+							'true' => 'Show',
+							'false' => 'Do not show',
+						),
+						'allow_null' => 0,
+						'other_choice' => 0,
+						'default_value' => 'false',
+						'layout' => 'vertical',
+						'return_format' => 'value',
+						'save_other_choice' => 0,
+					),
+				),
+				'location' => array(
+					array(
+						array(
+							'param' => 'options_page',
+							'operator' => '==',
+							'value' => 'theme-general-settings',
+						),
+					),
+				),
+				'menu_order' => 0,
+				'position' => 'normal',
+				'style' => 'default',
+				'label_placement' => 'top',
+				'instruction_placement' => 'label',
+				'hide_on_screen' => '',
+				'active' => true,
+				'description' => '',
+			));
+
+		endif;
+
 	}
 
 	// https://www.advancedcustomfields.com/resources/local-json/
-	function acf_json_save_json( $path ) {
+	// function acf_json_save_json( $path ) {
 	    
-	    // update path
-	    $path = plugin_dir_path( __FILE__ ) . '/acf-json';
+	//     // update path
+	//     // $path = WP_CONTENT_DIR . '/uploads/acf-json';
+	//     $path = plugin_dir_path( __FILE__ ) . '/acf-json';
 	    
+	//     // return
+	//     return $path;
 	    
-	    // return
-	    return $path;
-	    
-	}
+	// }
 
 	// https://www.advancedcustomfields.com/resources/local-json/
-	function acf_json_load_json( $paths ) {
+	// function acf_json_load_json( $paths ) {
 	    
-	    // remove original path (optional)
-	    unset($paths[0]);
+	//     // remove original path (optional)
+	//     unset($paths[0]);
+
+	//     // append path
+	//     // $path = WP_CONTENT_DIR . '/uploads/acf-json';
+	//     $path = plugin_dir_path( __FILE__ ) . 'acf-json';
+
+	//     // return
+	//     return $paths;
 	    
-	    // append path
-	    $paths[] = plugin_dir_path( __FILE__ ) . 'acf-json';
-	    
-	    // return
-	    return $paths;
-	    
-	}
+	// }
 
 
 

@@ -201,8 +201,8 @@ class Fastnetmarketing_Admin {
 			By using local json, the field group can be set to not display in the admin.
 			Therefore the field group is specific to the plugin and can only be updated manually or by updating the plugin (with field group in DB).
         */
-        $this->loader->add_filter( 'acf/settings/save_json', $plugin_admin, 'acf_json_save_json' );
-        $this->loader->add_filter( 'acf/settings/load_json', $plugin_admin, 'acf_json_load_json' );
+        // $this->loader->add_filter( 'acf/settings/save_json', $plugin_admin, 'acf_json_save_json' );
+        // $this->loader->add_filter( 'acf/settings/load_json', $plugin_admin, 'acf_json_load_json' );
 
 	}
 
