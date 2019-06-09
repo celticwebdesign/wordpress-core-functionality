@@ -1,0 +1,49 @@
+[
+    {
+        "key": "group_5cfcf01f2e74e",
+        "title": "Core Functionality",
+        "fields": [
+            {
+                "key": "field_5cfcf03748512",
+                "label": "Developer Box",
+                "name": "core_functionality__developer_box",
+                "type": "radio",
+                "instructions": "Show \/ Do not show, the red developer box.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "true": "Show",
+                    "false": "Do not show"
+                },
+                "allow_null": 0,
+                "other_choice": 0,
+                "default_value": "false",
+                "layout": "vertical",
+                "return_format": "value",
+                "save_other_choice": 0
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "options_page",
+                    "operator": "==",
+                    "value": "theme-general-settings"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": ""
+    }
+]
